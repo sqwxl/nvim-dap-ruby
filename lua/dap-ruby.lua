@@ -73,7 +73,7 @@ local function setup_ruby_adapter(dap)
 		-- Take the port from the config if the user has set this
 		-- If not, pick a random ephemeral port so we (probably) wont collide with other debuggers or anything else
 		-- If not, have the user pick a port
-		local port = config.port
+		local port = config.port or tonumber(vim.env.RUBY_DEBUG_PORT)
 		port = port or config.random_port and math.random(49152, 65535)
 		port = port or pick_port()
 
